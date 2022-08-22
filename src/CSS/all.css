@@ -1,0 +1,23 @@
+@import "./reset.css";
+
+
+h2{
+  font-size: 24px;
+  text-align: center;
+  font-weight: 300;
+  margin-bottom:30px;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 20px auto;
+  height: auto;
+  font-family: cursive;
+}
+
+
+@media(max-width: 767px) {
+  .container {
+    max-width: 750px;
+  }
+}
