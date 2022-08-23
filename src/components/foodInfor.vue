@@ -1,37 +1,16 @@
 <template>
+    
     <div class="content">
 
         <div class="header">
         <h2>食材資訊</h2>
         <searchBar :infor="foodList" @filter="searchfilter"></searchBar>
+        <button class="clearBtn" @click="cleaSearch">clear</button>
     </div>
-<table class="table table-striped-columns foodtable">
-            <thead>
-                <tr>
-                    <th scope="col">食品名稱</th>
-                    <th scope="col">蛋白質含量 (g)</th>
-                    <th scope="col">碳水化合物含量 (g)</th>
-                    <th scope="col">油脂含量 (g)</th>
-                    <th scope="col">膳食纖維含量 (g)</th>
-                    <th scope="col">熱量</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="food in searchList" :key="food.id">
-
-                    <th scope="row">{{ food.name }}</th>
-                    <td>{{ food.protein }}</td>
-                    <td>{{food.carbohydrate}}</td>
-                    <td>{{food.fat}}</td>
-                    <td>{{food.calories}}</td>
-                    <td>{{food.dietaryFiber}}</td>
-                </tr>
-            </tbody>
-        </table>
 
         <table class="table table-striped-columns foodtable">
             <thead>
-                <tr>
+                <tr class="head">
                     <th scope="col">食品名稱</th>
                     <th scope="col">蛋白質含量 (g)</th>
                     <th scope="col">碳水化合物含量 (g)</th>
@@ -43,7 +22,7 @@
             <tbody>
                 <tr v-for="food in chooseList" :key="food.id">
 
-                    <th scope="row">{{ food.name }}</th>
+                    <td scope="row">{{ food.name }}</td>
                     <td>{{ food.protein }}</td>
                     <td>{{food.carbohydrate}}</td>
                     <td>{{food.fat}}</td>
@@ -52,20 +31,21 @@
                 </tr>
             </tbody>
         </table>
-        <!-- <tr  v-for="(food,index) in filterRows.slice(pageStart, pageStart + offset)" :key="index.id"> -->
+    
     </div>
     <pageslide :infor="foodList" @set-page="selfupdate"></pageslide>
-    <!-- <pageslide :infor="foodList"></pageslide> -->
 </template>
 <script>
     import axios, {Axios} from "axios";
     import {VueElement} from "vue";
+    import banner from './banner.vue'
     import pageslide from './pageSlide.vue'
     import searchBar from './searchBar.vue'
     VueElement.prototype.$ajax = Axios;
     export default {
         data() {
             return {
+                originData:[],
                 foodList: [],
                 chooseList:[],
                 searchList:[]
@@ -73,7 +53,8 @@
         },
         components:{
             searchBar ,
-            pageslide
+            pageslide,
+            banner
         },
         async mounted() {
             // https://gis.taiwan.net.tw/XMLReleaseALL_public/restaurant_C_f.json
@@ -88,8 +69,14 @@
             },
 
             searchfilter(val){
-                this.searchList = val;
-                console.log(val)
+                // this.searchList = val;
+                this.chooseList = val;
+                this.foodList = val;
+                // console.log(val)
+            },
+            cleaSearch(){
+                this.foodList = this.originData
+                console.log(this.foodList)
             },
             foodRequest() {
                 //https://gw.openapi.org.tw/18463fd0-8aa7-11ea-8b2f-dfcba39a3448/6ace07502582?client_id=07420fe0-18c4-11ed-96b7-a9e2730cba3d&client_secret=ruyFnp9Umehj2BXf9x7jbmB9lKXXk7N39hL3EFKILEY%3D&skip=10&limit=100
@@ -97,6 +84,7 @@
                     .then(res => {
                         res = JSON.stringify(res.data)
                         res = JSON.parse(res)
+                        this.originData = res.data;
                         this.foodList = res.data;
                     })
                     // Manage errors if found any
@@ -116,18 +104,33 @@
 .header{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content:center;
     margin-bottom: 20px;
 }
 h2{
     margin:0px;
     margin-right:30px;
 }
+.clearBtn{
+    margin-left:15px;
+    border-radius: 20px;;
+    padding:5px;
+}
+/* .content{
+    background: url("../assets/spycies.jpg") no-repeat;
+background-size: contain;
+background-size: cover;
+ background-position: center;
+height:200px;
+} */
     .foodtable th,
     td {
         padding: 15px 20px;
         text-align: center;
         white-space: nowrap;
+    }
+    .foodtable .head {
+        /* position: absolute; */
     }
     .foodtable {
         table-layout: fixed;

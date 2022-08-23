@@ -5,50 +5,45 @@
   <input v-model="keyWord" type="text" class="searchbox">
 
   <a href ="#"><i class="fa fa-search" @click.prevent="filterSearch" v-on:keyup.enter="filterSearch"></i></a>
+
+  <!-- <a href="#">clear</a> -->
 </div>
 
 </template>
 
 
 <script>
+import About from "./About.vue";
 
 export default{
-
-data(){
-
-    return{
-        keyWord:"",
-        result:[]
-    }
-
-},
-props:{
-infor: {
-      type: Array, 
-      required: true
+    data() {
+        return {
+            keyWord: "",
+            result: []
+        };
     },
-
-},
-computed: {
-//   filterSearch() {
-
-//     this.$emit('filter',this.);
-    
-//     return this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
-//   }
-},
-methods:{
-    filterSearch() {
-    // console.log(this.keyWord)
-    this.result = this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
-    this.$emit('filter',this.result);
-    console.log( this.result,"fdsf")
-    // return this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
-  }
-
-}
-
-
+    props: {
+        infor: {
+            type: Array,
+            required: true
+        },
+    },
+    computed: {
+    //   filterSearch() {
+    //     this.$emit('filter',this.);
+    //     return this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
+    //   }
+    },
+    methods: {
+        filterSearch() {
+            // console.log(this.keyWord)
+            this.result = this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
+            this.$emit("filter", this.result);
+            console.log(this.keyWord, "fdsf");
+            // return this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
+        }
+    },
+    components: { About }
 }
 
 </script>
