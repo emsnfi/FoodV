@@ -1,8 +1,13 @@
 
 <template>
   <h2></h2>
+  <div class="choose">
   <drop-select :infor="city" @selectItem="filterItem"></drop-select>
-
+  <div class="search-group">
+  <searchBar :infor="spots" :keyData="keyData" @filter="searchfilter"></searchBar>
+  <button class="clearBtn" @click="cleaSearch">clear</button>
+  </div>
+  </div>
   <ul class="travelspot">
     <li v-for="spot in selected" :key="spot.id">
       <img
@@ -34,13 +39,14 @@
       </div>
     </li>
   </ul>
-  <!-- <pageSlide :infor="spots" :offset="12" @set-page="selfupdate"></pageSlide> -->
+  <pageSlide :infor="spots" :offset="12" @set-page="selfupdate"></pageSlide>
 </template>
 
 <script>
 import travelData from "../json/travel.json";
 import pageSlide from "./tool/pageSlide.vue";
 import dropSelect from "./tool/dropSelect.vue"
+import searchBar from "./tool/searchBar.vue"
 export default {
   data() {
     return {
@@ -48,16 +54,19 @@ export default {
       spots: travelData.slice(0, 100),
       city: ["花蓮縣", "臺東縣"],
       selected: travelData.slice(0, 100),
+      keyData:'Name'
     };
   },
   components: {
     pageSlide,
-    dropSelect
+    dropSelect,
+    searchBar
   },
   methods: {
     selfupdate(val) {
+      this.selected = this.originData;
       this.selected = val;
-      // console.log(val)
+    
     },
     filterItem(val) {
       // val 是選擇的 item 名稱
@@ -68,6 +77,18 @@ export default {
       console.log(this.selected);
       this.spots = this.selected;
     },
+
+     searchfilter(val){
+                // this.searchList = val;
+                this.selected = val;
+                this.spots = val;
+                // console.log(val)
+            },
+
+               cleaSearch(){
+                this.spots = this.originData
+                // console.log(this.foodList)
+            },
   },
   watch: {
     selected: {
@@ -79,6 +100,14 @@ export default {
 </script>
 
 <style scoped>
+.choose{
+  display:flex;
+  justify-content: center;
+}
+
+.search-group{
+  display:flex;
+}
 .travelspot {
   display: flex;
   flex-wrap: wrap;
@@ -136,6 +165,12 @@ svg {
 .contact a:hover {
   /* color:burlywood; */
   color: chocolate;
+}
+
+.clearBtn{
+    margin-left:15px;
+    border-radius: 10px;;
+    padding:5px;
 }
 </style>
 

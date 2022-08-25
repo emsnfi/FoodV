@@ -4,7 +4,7 @@
 
         <div class="header">
         <h2>食材資訊</h2>
-        <searchBar :infor="foodList" @filter="searchfilter"></searchBar>
+        <searchBar :infor="foodList" :keyData="keyData" @filter="searchfilter"></searchBar>
         <button class="clearBtn" @click="cleaSearch">clear</button>
     </div>
 
@@ -49,7 +49,8 @@
                 originData:[],
                 foodList: [],
                 chooseList:[],
-                searchList:[]
+                searchList:[],
+                keyData:'name'
             };
         },
         components:{
@@ -93,7 +94,7 @@
                         if (error.request.status == 503) {
                             setTimeout(() => {
                                 this.foodRequest()
-                            }, 0.5);
+                            }, 0.1);
                         }
                     })
             }

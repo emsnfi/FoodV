@@ -4,7 +4,7 @@
 <div class="search" >
   <input v-model="keyWord" type="text" class="searchbox">
 
-  <a href ="#"><i class="fa fa-search" @click.prevent="filterSearch" v-on:keyup.enter="filterSearch"></i></a>
+  <a href ="" @click.prevent="filterSearch" v-on:keyup.enter="filterSearch"> <i class="fa fa-search" ></i></a>
 
 
 </div>
@@ -27,6 +27,9 @@ export default{
             type: Array,
             required: true
         },
+        keyData:{
+            type:String
+        }
     },
     computed: {
     //   filterSearch() {
@@ -36,10 +39,11 @@ export default{
     },
     methods: {
         filterSearch() {
-         
-            this.result = this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
+        
+
+            this.result = this.infor.filter(searchResult => searchResult[this.keyData].match(this.keyWord));
             this.$emit("filter", this.result);
-            console.log(this.keyWord, "fdsf");
+            // console.log(this.keyWord, "fdsf");
             // return this.infor.filter(searchResult => searchResult.name.match(this.keyWord));
             
 
@@ -57,6 +61,7 @@ export default{
   display:flex;
   align-items: center;
   position:relative;
+  margin-right:5px;
 }
 
 .search a{

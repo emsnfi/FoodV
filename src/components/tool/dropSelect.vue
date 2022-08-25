@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selected">
+  <select v-model="selected" class="selectOption">
     <option value="">請選擇</option>
     <option v-for="item in infor" :value="item" :key="item">
       {{ item }}
@@ -36,3 +36,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+.selectOption{
+  padding:8px;
+  border-radius: 10px;;
+  text-align: center;
+  margin-right:10px;
+}
+
+
+</style>
