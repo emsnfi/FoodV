@@ -10,7 +10,7 @@
             :class="['page-item',{disabled:currentPage===1}]"
             @click.prevent="setPage(currentPage-1)"
           >
-            <a class="page-link" href="#">&lt</a>
+            <a class="page-link" href="#">></a>
           </li>
           <li
             v-for="page in totalPage"
