@@ -3,12 +3,8 @@
 <div class="menu mt-5">
 
   <div class="start">
-<h1 class="logo"><a href="#">吃吃樂</a></h1>
-
-<div class="search">
-  <input type="text" class="searchbox">
-   <a href ="#"><i class="fa fa-search"></i></a>
-</div>
+<h1 class="logo"><a href="#">Food Explorer</a></h1>
+<h2><a href="#">Food Explorer</a></h2>
 
 </div>
 
@@ -31,6 +27,12 @@
           </a>
         </li>
 
+         <li class="nav-item">
+          <a class="nav-link" href="#/restaurant" >
+            收藏
+          </a>
+        </li>
+
 
 </ul>
 
@@ -48,6 +50,7 @@ import foodInfor from './foodInfor.vue'
 import Home from './Home.vue'
 import About from './About.vue'
 import resTau from './restaurant.vue'
+
 const routes = {
   '/': Home,
   '/about': About,
@@ -64,7 +67,8 @@ export default {
     Home,
     About,
     foodInfor,
-    resTau
+    resTau,
+  
   },
   computed: {
     currentView() {
@@ -80,7 +84,9 @@ export default {
 </script>
 
 <style scoped>
-
+h2{
+  margin:0px;
+}
 .logo{
     display:block;
     background: url('../assets/dinner.png') no-repeat;
@@ -107,6 +113,7 @@ export default {
 
 .start{
   display: flex;
+  align-items: center;
 
 }
 .nav{

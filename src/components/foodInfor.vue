@@ -12,10 +12,10 @@
             <thead>
                 <tr class="head">
                     <th scope="col">食品名稱</th>
-                    <th scope="col">蛋白質含量 (g)</th>
-                    <th scope="col">碳水化合物含量 (g)</th>
-                    <th scope="col">油脂含量 (g)</th>
-                    <th scope="col">膳食纖維含量 (g)</th>
+                    <th scope="col">蛋白質含量</th>
+                    <th scope="col">碳水化合物含量</th>
+                    <th scope="col">油脂含量</th>
+                    <th scope="col">膳食纖維含量</th>
                     <th scope="col">熱量</th>
                 </tr>
             </thead>
@@ -33,14 +33,15 @@
         </table>
     
     </div>
-    <pageslide :infor="foodList" @set-page="selfupdate"></pageslide>
+    <span class="information">含量單位為公克(g)</span>
+    <pageslide :infor="foodList" @set-page="selfupdate" :offset=13></pageslide>
 </template>
 <script>
     import axios, {Axios} from "axios";
     import {VueElement} from "vue";
     import banner from './banner.vue'
-    import pageslide from './pageSlide.vue'
-    import searchBar from './searchBar.vue'
+    import pageslide from './tool/pageSlide.vue'
+    import searchBar from './tool/searchBar.vue'
     VueElement.prototype.$ajax = Axios;
     export default {
         data() {
@@ -146,4 +147,11 @@ height:200px;
             white-space: nowrap;
         }
     }
+    .information{
+        display: block;
+        text-align: center;
+    
+        font-size: 12px;;
+    }
+  
 </style>
