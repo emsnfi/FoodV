@@ -9,7 +9,7 @@
   </div>
   </div>
   <ul class="travelspot">
-    <li v-for="spot in selected" :key="spot.id">
+    <li v-for="(spot,index) in selected" :key="spot.id">
       <img
         class="spotImg"
         :src="spot.Picture1"
@@ -20,9 +20,13 @@
         "
       />
       <div class="spotName">
-        <a href="">
-          <i class="fa-solid fa-heart"> </i>
+        <!-- <a href="" :class="{ active: isActive }" @click.prevent="addFav" ></a> -->
+       <a href="" :class="{ active: clickindex==index }" @click.prevent="addFav(index)" >
+          <i class="fa fa-heart" > </i>
+         
         </a>
+       
+        
         <span>{{ spot.Name }}</span>
       </div>
       <div class="address">
@@ -54,7 +58,9 @@ export default {
       spots: travelData.slice(0, 100),
       city: ["花蓮縣", "臺東縣"],
       selected: travelData.slice(0, 100),
-      keyData:'Name'
+      keyData:'Name',
+       isActive: false,
+       clickindex :-1
     };
   },
   components: {
@@ -89,6 +95,17 @@ export default {
                 this.spots = this.originData
                 // console.log(this.foodList)
             },
+    addFav(index){
+      // event.preventDefault();
+      // if(this.isActive == false){
+      //   this.isActive = true
+      // }
+      // else{
+      //   this.isActive = false
+      // }
+
+       this.clickindex = index;
+    }
   },
   watch: {
     selected: {
@@ -100,6 +117,7 @@ export default {
 </script>
 
 <style scoped>
+
 .choose{
   display:flex;
   justify-content: center;
@@ -128,21 +146,21 @@ export default {
     width: 48%;
   }
 }
-.fa-heart {
+/* .fa-heart-circle-plus{
   position: absolute;
   font-size: 20px;
   padding: 10px;
-}
+} */
 .spotName {
   position: relative;
 }
-.spotName .fa-heart {
+.spotName a {
   position: absolute;
   right: 0px;
   bottom: 0px;
-  color: grey;
+  /* color: grey; */
 }
-.spotName .fa-heart:hover {
+.spotName a:hover {
   color: red;
 }
 .active {

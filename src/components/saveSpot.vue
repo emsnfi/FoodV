@@ -1,7 +1,7 @@
 <template>
     
     <ul class="spotSave" >
-        <li v-for="" :key=""></li>
+        <!-- <li v-for="" :key="">< /li> -->
     </ul>
 
 </template>
@@ -16,12 +16,7 @@ data(){
     }
 },
 
-props:{
-    infor:{
-        type:Array,
 
-    }
-},
 methods(){
     function addItem(event){
          event.preventDefault();
