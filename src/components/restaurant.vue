@@ -20,8 +20,7 @@
         "
       />
       <div class="spotName">
-        <!-- :class="{ active: clickindex==index }" -->
-        <!-- <a href="" :class="{ active: isActive }" @click.prevent="addFav" ></a> -->
+        
        <a href=""  :class="{active:isActive[index]}"  @click.prevent="addFav(index)" >
           <i class="fa fa-heart" > </i>
          
@@ -86,15 +85,15 @@ export default {
     },
 
      searchfilter(val){
-                // this.searchList = val;
+         
                 this.selected = val;
                 this.spots = val;
-                // console.log(val)
+       
             },
 
                cleaSearch(){
                 this.spots = this.originData
-                // console.log(this.foodList)
+           
             },
     addFav(index){
       if(this.isActive[index] == true)
@@ -121,6 +120,7 @@ export default {
 .choose{
   display:flex;
   justify-content: center;
+  margin-bottom: 15px;;
 }
 
 .search-group{
@@ -146,11 +146,7 @@ export default {
     width: 48%;
   }
 }
-/* .fa-heart-circle-plus{
-  position: absolute;
-  font-size: 20px;
-  padding: 10px;
-} */
+
 .spotName {
   position: relative;
 }

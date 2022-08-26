@@ -62,6 +62,7 @@ export default{
   align-items: center;
   position:relative;
   margin-right:5px;
+  
 }
 
 .search a{

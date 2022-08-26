@@ -118,22 +118,14 @@ h2{
     border-radius: 20px;;
     padding:5px;
 }
-/* .content{
-    background: url("../assets/spycies.jpg") no-repeat;
-background-size: contain;
-background-size: cover;
- background-position: center;
-height:200px;
-} */
+
     .foodtable th,
     td {
         padding: 15px 20px;
         text-align: center;
         white-space: nowrap;
     }
-    .foodtable .head {
-        /* position: absolute; */
-    }
+
     .foodtable {
         table-layout: fixed;
     }
