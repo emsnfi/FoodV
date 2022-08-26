@@ -6,7 +6,13 @@
 
 
 export default{
+    
+props:{
+    infor:{
+        type:Object
 
+    }
+},
 }
 
 
