@@ -1,6 +1,6 @@
 
 <template>
-  <h2></h2>
+  <h2>餐廳</h2>
   <div class="choose">
   <drop-select :infor="city" @selectItem="filterItem"></drop-select>
   <div class="search-group">
@@ -20,8 +20,9 @@
         "
       />
       <div class="spotName">
+        <!-- :class="{ active: clickindex==index }" -->
         <!-- <a href="" :class="{ active: isActive }" @click.prevent="addFav" ></a> -->
-       <a href="" :class="{ active: clickindex==index }" @click.prevent="addFav(index)" >
+       <a href=""  :class="{active:isActive[index]}"  @click.prevent="addFav(index)" >
           <i class="fa fa-heart" > </i>
          
         </a>
@@ -59,8 +60,8 @@ export default {
       city: ["花蓮縣", "臺東縣"],
       selected: travelData.slice(0, 100),
       keyData:'Name',
-       isActive: false,
-       clickindex :-1
+       isActive: [],
+       
     };
   },
   components: {
@@ -96,15 +97,14 @@ export default {
                 // console.log(this.foodList)
             },
     addFav(index){
-      // event.preventDefault();
-      // if(this.isActive == false){
-      //   this.isActive = true
-      // }
-      // else{
-      //   this.isActive = false
-      // }
-
-       this.clickindex = index;
+      if(this.isActive[index] == true)
+      {
+        this.isActive[index] = false
+      } 
+      else{
+        this.isActive[index] = true
+      }
+  
     }
   },
   watch: {
