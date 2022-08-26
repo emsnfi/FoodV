@@ -87,6 +87,11 @@ export default {
 h2{
   margin:0px;
 }
+@media(max-width:414px){
+    h2{
+      display: none;
+    }
+  }
 .logo{
     display:block;
     background: url('../assets/dinner.png') no-repeat;
@@ -110,7 +115,11 @@ h2{
     margin-bottom: 25px;
 }
 
-
+/* @media(max-width: 414px) {
+  .menu {
+    display: block;
+  }
+} */
 .start{
   display: flex;
   align-items: center;

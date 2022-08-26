@@ -12,7 +12,8 @@ h2{
   max-width: 1024px;
   margin: 20px auto 0px auto;
   height: auto;
-  font-family: cursive;
+  /* font-family: cursive; */
+  font-family: Microsoft JhengHei;
 }
 
   .footer{
@@ -24,5 +25,11 @@ h2{
 @media(max-width: 767px) {
   .container {
     max-width: 750px;
+  }
+}
+
+@media(max-width: 414px) {
+  .container {
+    max-width: 400px;
   }
 }

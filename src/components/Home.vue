@@ -13,7 +13,7 @@
 
       餐廳資訊主要呈現花蓮以及台東著名的餐館，資料來源
 
-      <a class="link" href="https://data.gov.tw/dataset/7779">政府資料開放平臺的觀光資訊</a>
+      <a class="link" target="_blank" href="https://data.gov.tw/dataset/7779">政府資料開放平臺的觀光資訊</a>
     </p>
 
   </div>
@@ -39,7 +39,7 @@
     margin: 20px 0px 5px 0px;
 
   }
-
+  
   .link {
     color: blue;
   }
@@ -52,6 +52,11 @@ p{
     margin:0 auto;
     width:700px;
     text-align: center;
+  }
+  @media(max-width:414px){
+    .explain{
+          width: 300px;
+    }
   }
 
 </style>

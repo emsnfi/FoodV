@@ -16,13 +16,6 @@
 
 <style scoped>
 
-/* .banner img{
-
-    width:100%;
-    height:200px;
-
-} */
-
 .banner{
 background: url("../assets/foodbanner.jpg") no-repeat;
 background-size: contain;
@@ -31,7 +24,11 @@ background-size: cover;
 height:367px;
 position:relative;
 }
-
+@media(max-width:414px){
+    .banner{
+        height: 240px;
+    }
+}
 .banner h3{
         width: -webkit-fill-available;
     color:white;
@@ -41,5 +38,21 @@ position:relative;
     opacity: 0.75;
     position: absolute;
     top:115px;
+}
+
+
+
+@media (max-width:768px) {
+        .banner h3{
+             padding: 40px 166px;
+        }
+}
+
+@media (max-width:414px) {
+        .banner h3{
+            padding: 20px 35px;
+            top:70px;
+            font-size: 45px;
+        }
 }
 </style>

@@ -65,6 +65,7 @@ export default{
   
 }
 
+
 .search a{
   font-size: 20px;
   
@@ -80,6 +81,10 @@ export default{
  padding:12px;
 
 }
-
+@media(max-width:414px){
+    .searchbox{
+        width:200px;
+    }
+}
 </style>
 

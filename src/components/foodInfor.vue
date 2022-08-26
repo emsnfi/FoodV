@@ -113,12 +113,21 @@ h2{
     margin:0px;
     margin-right:30px;
 }
+@media(max-width:414px){
+    h2{
+        font-size: 18px;
+    }
+}
 .clearBtn{
     margin-left:15px;
     border-radius: 20px;;
     padding:5px;
 }
-
+@media(max-width:414px){
+    .clearBtn{
+        font-size: 12px;
+    }
+}
     .foodtable th,
     td {
         padding: 15px 20px;
@@ -138,6 +147,13 @@ h2{
             padding: 9px;
             text-align: center;
             white-space: nowrap;
+        }
+    }
+    @media(max-width:414px){
+        .foodtable{
+            display: block;
+    overflow-x: auto;
+    white-space: nowrap;
         }
     }
     .information{
